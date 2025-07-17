@@ -2,7 +2,7 @@
 
 ## Background
 The screen output below shows the Movie Ranking program, which displays a list of movies in ranked order with the best movie in 
-the #1 position, the second best in the #2 position, and so on. Then, the program allows the user to change these rankings. To do that, 
+the #1 position, the second best in the #2 position, and so on. The program allows the user to change these rankings. To do that, 
 the user selects a movie by entering its current rank. Then, the user enters a new ranking for the movie.
 
 <pre><b>The Movie Rankings program
