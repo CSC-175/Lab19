@@ -1,0 +1,92 @@
+name: Autograding Tests
+'on':
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test 1
+      id: test-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Test 1
+        setup-command: g++ Lab2.cpp -o test1
+        command: "./test1"
+        input: |-
+          y
+          4
+          1
+          n
+        expected-output: |-
+          Movie Rankings
+          --------------
+          1 - Cars
+          2 - The Incredibles
+          3 - Monsters Inc.
+          4 - Toy Story
+          5 - Finding Nemo
+        comparison-method: contains
+        timeout: 1
+        max-score: 5
+    - name: Test 2
+      id: test-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Test 2
+        setup-command: g++ Lab2.cpp -o test2
+        command: "./test2"
+        input: |-
+          y
+          4
+          2
+          n
+        expected-output: |-
+          Movie Rankings
+          --------------
+          1 - The Incredibles
+          2 - Cars
+          3 - Monsters Inc.
+          4 - Toy Story
+          5 - Finding Nemo
+        comparison-method: contains
+        timeout: 1
+        max-score: 5
+    - name: Test 3
+      id: test-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: Test 3
+        setup-command: g++ Lab2.cpp -o test3
+        command: "./test3"
+        input: |-
+          y
+          5
+          3
+          n
+        expected-output: |-
+          Movie Rankings
+          --------------
+          1 - The Incredibles
+          2 - Monsters Inc.
+          3 - Finding Nemo
+          4 - Toy Story
+          5 - Cars
+        comparison-method: contains
+        timeout: 1
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST-1_RESULTS: "${{steps.test-1.outputs.result}}"
+        TEST-2_RESULTS: "${{steps.test-2.outputs.result}}"
+        TEST-3_RESULTS: "${{steps.test-3.outputs.result}}"
+      with:
+        runners: test-1,test-2,test-3
