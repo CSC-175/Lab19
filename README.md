@@ -32,13 +32,18 @@ Do you want to change any rankings? (y/n): n
 </b></pre>
 
 ## Directions
-Your solution must include the following functions that implement the given descriptions.
+Complete the given template, <b>lab19.cpp</b>, that will implement the Movie Ranking program described above.
 
-main() : this function starts by defining a vector of strings named movies. To keep this program simple, the code uses an initialization list to initialize this vector with five movie titles. However, in a more realistic program, this data would be read from a file that might contain many more titles. After initializing the vector, the code displays the program title and passes the vector of movie titles to the display_rankings() function which prints the list of movie titles along with their rank number. Next, the  code calls the get_choice() function.
+**Functional Decomposition**
 
-display_rankings() : this function defines the vector as a constant reference parameter. That way, the function works directly with the vector passed to it, not with a copy, and it can’t change any of the data in the vector. That makes sense because this function only needs to read the vector elements, not change them.
+The program must contain the following functions that carry out the operations in the given descriptions. Use the function names given in the table. All data must be passed to required functions by value or reference; no global variables are allowed.
 
-change_ranking() : this function also defines the vector as a reference parameter so it can work directly with the vector passed to it. This time, though, the vector isn’t defined as a constant. That makes sense because this function needs to change the sequence of the elements in the vector. This is a common pattern when working with vectors, which can be large and inefficient to copy. In other words, it’s common for a function to use a constant reference parameter for the vector when the function only needs to read the elements in the vector, and it’s common for a function to use a variable reference parameter for the vector when the function needs to make changes to the vector.
+<table>
+<tr><td>main</td><td>This function starts by defining a vector of strings named movies. To keep this program simple, the code uses an initialization list to initialize this vector with five movie titles. However, in a more realistic program, this data would be read from a file that might contain many more titles. After initializing the vector, the code displays the program title and passes the vector of movie titles to the display_rankings() function which prints the list of movie titles along with their rank number. Next, the  code calls the get_choice() functio</td></tr>
+<tr><td>display_rankings</td><td>This function defines the vector as a constant reference parameter. That way, the function works directly with the vector passed to it, not with a copy, and it can’t change any of the data in the vector. That makes sense because this function only needs to read the vector elements, not change them.</td></tr>
+<tr><td>change_ranking</td><td>This function also defines the vector as a reference parameter so it can work directly with the vector passed to it. This time, though, the vector isn’t defined as a constant. That makes sense because this function needs to change the sequence of the elements in the vector. This is a common pattern when working with vectors, which can be large and inefficient to copy. In other words, it’s common for a function to use a constant reference parameter for the vector when the function only needs to read the elements in the vector, and it’s common for a function to use a variable reference parameter for the vector when the function needs to make changes to the vector.</td></tr>
+<tr><td>get_choice</td><td>This function asks the user if they want to change a ranking. If so, the function collects the rank number of the title to be moved (current_rank) and the rank position where it is to be moved to in the list (new_ranking) and then return these values that indicates the response.</td></tr></table>
 
-get_choice() : this function asks the user if they want to change a ranking. If so, the function collects the rank number of the title to be moved (current_rank) and the rank position where it is to be moved to in the list (new_ranking) and then return these values that indicates the response.
+
+
 
