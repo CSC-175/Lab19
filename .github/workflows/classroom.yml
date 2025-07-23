@@ -1,6 +1,6 @@
 name: Autograding Tests
 'on':
-- workflow_dispatch
+- push
 - repository_dispatch
 permissions:
   checks: write
@@ -18,7 +18,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: Test 1
-        setup-command: g++ Lab2.cpp -o test1
+        setup-command: g++ lab19.cpp -o test1
         command: "./test1"
         input: |-
           y
@@ -41,7 +41,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: Test 2
-        setup-command: g++ Lab2.cpp -o test2
+        setup-command: g++ lab19.cpp -o test2
         command: "./test2"
         input: |-
           y
@@ -64,7 +64,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: Test 3
-        setup-command: g++ Lab2.cpp -o test3
+        setup-command: g++ lab19.cpp -o test3
         command: "./test3"
         input: |-
           y
